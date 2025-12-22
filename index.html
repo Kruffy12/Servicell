@@ -12,6 +12,7 @@
             padding: 0;
             background-color: #f5f8ff;
             overflow-y: scroll;
+            height: 100%;
         }
 
         h1,
@@ -122,12 +123,13 @@
 <body class="fade-in-element">
     <nav>
         <form>
-            <button><a href="index.html">Home</a></button>
-            <button><a href="about.html">About</a></button>
-            <button><a href="policy.html">Policy</a></button>
-            <button><a href="contact.html">Contact</a></button>
+            <button type="button" onclick="window.location.href='index.html'">Home</button>
+            <button type="button" onclick="window.location.href='about.html'">About</button>
+            <button type="button" onclick="window.location.href='policy.html'">Policy</button>
+            <button type="button" onclick="window.location.href='contact.html'">Contact</button>
         </form>
     </nav>
+
     <br>
     <br>
     <br>
@@ -139,7 +141,7 @@
     <br>
     <br>
     <section>
-        <h2>Our Services:</h2>
+        <h1>Our Services:</h1>
         <div id="carousel">
             <div class="card">
                 <img src="device-repair.png" alt="Phone Repair" class="card-image" style="width: 100px; height: auto;">
