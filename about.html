@@ -21,12 +21,7 @@
             min-height: 100vh;
         }
 
-        h1,
-        h2,
-        h3,
-        h4,
-        h5,
-        h6 {
+        h1, h2, h3, h4, h5, h6 {
             font-weight: 700;
             color: #2a3448;
             text-align: center;
@@ -55,7 +50,6 @@
             flex-wrap: wrap;
         }
 
-        /* Use these exact rules in every file */
         button {
             background-color: #2563eb;
             color: white;
@@ -65,50 +59,12 @@
             border-radius: 10px;
             font-weight: bold;
             font-size: 1em;
-            transition: 0.3s ease-in-out;
-            /* Proper transition placement */
+            text-decoration: none;
+            transition: background-color 0.3s ease-in-out;
         }
 
         button:hover {
             background-color: #3b82f6;
-        }
-
-        footer {
-            background-color: #2a3448;
-            color: white;
-            padding: 2em 1em;
-            text-align: center;
-            margin-top: 2em;
-        }
-
-        footer h3 {
-            color: white;
-            margin-bottom: 1em;
-        }
-
-        footer p {
-            margin: 0.5em 0;
-            color: #bbb;
-            text-align: center !important;
-            /* Forces center on mobile */
-        }
-
-        footer .social-links a {
-            display: inline-flex;
-            align-items: center;
-            justify-content: center;
-            width: 2.5em;
-            height: 2.5em;
-            background-color: #3b82f6;
-            border-radius: 50%;
-            /* Clean circles like modern apps */
-            color: white;
-            text-decoration: none;
-            transition: 0.3s ease-in-out;
-        }
-
-        .social-links a:hover {
-            background-color: #1e40af;
         }
 
         a {
@@ -120,7 +76,6 @@
             from {
                 opacity: 0;
             }
-
             to {
                 opacity: 1;
             }
@@ -326,20 +281,12 @@
 
     <div class="content-wrapper">
         <h1>ServiCell | About Page</h1>
-        <img src="logo.png" alt="ServiCell Logo"
-            style="display: block; margin: 2em auto; max-width: 250px; width: 100%; height: auto;">
+        <img src="logo.png" alt="ServiCell Logo" style="display: block; margin: 2em auto; max-width: 250px; width: 100%; height: auto;">
         <h2><i>"We Fix Everything, Even Broken Hearts."</i></h2>
 
         <h1 style="margin-top: 2em;">Our Story</h1>
         <p class="story-text">
-            Founded in 2014 by a single passionate technician, ServiCell began with a simple mission: to fix electronics
-            reliably without breaking the bank. What started as a mere hobby has since grown into a tight-knit team of
-            2–3 dedicated technicians, each committed to delivering fast, professional, and affordable tech solutions.
-            Over the years, we've expanded our expertise to cover phones, laptops, gaming consoles, and software
-            support, while maintaining the personal touch that made us trusted from day one. At ServiCell, we believe
-            every device deserves a second chance, and every customer deserves transparency, care, and respect. Whether
-            it's a cracked screen, a stubborn laptop, or a software issue, we're here to get you back online with
-            confidence.
+            Founded in 2014 by a single passionate technician, ServiCell began with a simple mission: to fix electronics reliably without breaking the bank. What started as a mere hobby has since grown into a tight-knit team of 2–3 dedicated technicians, each committed to delivering fast, professional, and affordable tech solutions. Over the years, we've expanded our expertise to cover phones, laptops, gaming consoles, and software support, while maintaining the personal touch that made us trusted from day one. At ServiCell, we believe every device deserves a second chance, and every customer deserves transparency, care, and respect. Whether it's a cracked screen, a stubborn laptop, or a software issue, we're here to get you back online with confidence.
         </p>
 
         <h1 style="margin-top: 2em;">Our Logos Through the Years</h1>
@@ -360,16 +307,12 @@
 
         <h1 style="margin-top: 2em;">Why Choose Us?</h1>
         <ul class="benefits-list">
-            <li>Expert Technicians: Our small, tight-knit team of 2–3 certified experts ensures your devices are in
-                capable hands.</li>
-            <li>Affordable & Transparent: We provide honest estimates and competitive pricing, so you know exactly what
-                you're paying for.</li>
+            <li>Expert Technicians: Our small, tight-knit team of 2–3 certified experts ensures your devices are in capable hands.</li>
+            <li>Affordable & Transparent: We provide honest estimates and competitive pricing, so you know exactly what you're paying for.</li>
             <li>Fast & Reliable: We aim to repair your devices quickly without sacrificing quality.</li>
             <li>Comprehensive Service: From phones and laptops to consoles and software support, we cover it all.</li>
-            <li>Customer-Focused: We value each customer, handling every device with care, transparency, and respect.
-            </li>
-            <li>Trust & Experience: Founded in 2014, we've built our reputation on reliability and personal service.
-            </li>
+            <li>Customer-Focused: We value each customer, handling every device with care, transparency, and respect.</li>
+            <li>Trust & Experience: Founded in 2014, we've built our reputation on reliability and personal service.</li>
         </ul>
 
         <h1 style="margin-top: 2em;">Some of Our Work</h1>
@@ -390,15 +333,13 @@
     </div>
 
     <footer>
-        <div style="margin-bottom: 1.5em;">
-            <h3 style="color: white;">Follow Us</h3>
-            <div style="display: flex; gap: 1em; justify-content: center; font-size: 1.5em;">
-                <a href="https://www.facebook.com/ServiCell-Belize-100064104937587/" target="_blank">f</a>
-            </div>
+        <h3>Follow Us</h3>
+        <div class="social-links">
+            <a href="https://www.facebook.com/ServiCell-Belize-100064104937587/" target="_blank">f</a>
         </div>
-        <p style="margin: 0.5em 0; color: #bbb;">📍 #7 Douglas Jones Street, Belize City</p>
-        <p style="margin: 0.5em 0; color: #bbb;">🕒 Mon–Fri: 8 AM – 8 PM | Sat: 9 AM – 7 PM | Sun: Closed</p>
-        <p style="margin: 0; color: #bbb;">© 2026 ServiCell. All rights reserved.</p>
+        <p>📍 #7 Douglas Jones Street, Belize City</p>
+        <p>🕒 Mon–Fri: 8 AM – 8 PM | Sat: 9 AM – 7 PM | Sun: Closed</p>
+        <p>© 2026 ServiCell. All rights reserved.</p>
     </footer>
 </body>
 
