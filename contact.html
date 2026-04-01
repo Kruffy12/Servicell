@@ -16,17 +16,6 @@
             height: 100%;
         }
 
-        @media (max-width: 600px) {
-            p {
-                text-align: left !important;
-            }
-
-            button {
-                min-height: 44px;
-
-            }
-        }
-
         h1,
         h2,
         h3,
@@ -64,27 +53,6 @@
             gap: 1em;
             justify-content: center;
             flex-wrap: wrap;
-
-        }
-
-
-        @media (max-width: 600px) {
-            nav {
-                padding: 0.75em;
-            }
-
-            nav form {
-                gap: 0.5em;
-            }
-
-            nav button {
-                flex: 1;
-                min-width: 70px;
-                padding: 0.6em 0.5em;
-                font-size: 0.95rem;
-
-                border-radius: 8px;
-            }
         }
 
         button {
@@ -97,6 +65,7 @@
             font-weight: bold;
             font-size: larger;
             text-decoration: none;
+            min-height: 44px;
         }
 
         button:hover {
@@ -107,7 +76,6 @@
         a {
             color: white;
             text-decoration: none;
-            /* remove underline */
         }
 
         @keyframes fadeIn {
@@ -185,6 +153,7 @@
             border-radius: 4px;
             font-family: inherit;
             font-size: 1rem;
+            box-sizing: border-box;
         }
 
         input[type="text"]:focus,
@@ -228,12 +197,45 @@
         }
 
         @media (max-width: 600px) {
+            nav {
+                padding: 0.75em;
+            }
+
             nav form {
+                gap: 0.5em;
                 flex-direction: column;
             }
 
             nav button {
                 width: 100%;
+                padding: 0.6em 0.5em;
+                font-size: 0.95rem;
+                border-radius: 8px;
+            }
+
+            p {
+                text-align: left;
+            }
+
+            .contact-info p {
+                text-align: left;
+            }
+
+            main {
+                margin-top: 7em;
+                padding: 1em;
+            }
+
+            h1 {
+                font-size: 1.5em;
+            }
+
+            .tagline {
+                font-size: 1.1em;
+            }
+
+            footer {
+                padding: 1.5em;
             }
         }
     </style>

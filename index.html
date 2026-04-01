@@ -17,13 +17,24 @@
         }
 
         @media (max-width: 600px) {
+            body {
+                padding: 0;
+            }
+
             p {
                 text-align: left !important;
             }
 
             button {
                 min-height: 44px;
+            }
 
+            h1 {
+                font-size: 1.5rem;
+            }
+
+            h2 {
+                font-size: 1.3rem;
             }
         }
 
@@ -59,9 +70,7 @@
             gap: 1em;
             justify-content: center;
             flex-wrap: wrap;
-
         }
-
 
         @media (max-width: 600px) {
             nav {
@@ -76,8 +85,7 @@
                 flex: 1;
                 min-width: 70px;
                 padding: 0.6em 0.5em;
-                font-size: 0.95rem;
-
+                font-size: 0.9rem;
                 border-radius: 8px;
             }
         }
@@ -102,7 +110,6 @@
         a {
             color: white;
             text-decoration: none;
-            /* remove underline */
         }
 
         #carousel {
@@ -110,23 +117,15 @@
             gap: 1rem;
             overflow-x: auto;
             scroll-behavior: smooth;
-            padding: 1rem 0;
-        }
-
-        #carousel {
+            padding: 1rem;
             cursor: grab;
-            scroll-behavior: auto;
+            -ms-overflow-style: none;
+            scrollbar-width: none;
+            -webkit-overflow-scrolling: touch;
         }
 
         #carousel::-webkit-scrollbar {
             display: none;
-        }
-
-        #carousel {
-            -ms-overflow-style: none;
-            scrollbar-width: none;
-            padding: 1rem;
-            -webkit-overflow-scrolling: touch;
         }
 
         .card {
@@ -143,6 +142,15 @@
         @media (max-width: 400px) {
             .card {
                 width: 75vw;
+                padding: 1.5rem;
+            }
+
+            .card h3 {
+                font-size: 1.1rem;
+            }
+
+            .card p {
+                font-size: 0.95rem;
             }
         }
 
@@ -164,6 +172,16 @@
         .fade-in-element {
             opacity: 0;
             animation: fadeIn 1.5s forwards;
+        }
+
+        @media (max-width: 600px) {
+            section {
+                padding: 0 1rem;
+            }
+
+            footer {
+                padding: 1.5em !important;
+            }
         }
     </style>
 </head>
@@ -194,8 +212,7 @@
             <div class="card">
                 <img src="device-repair.png" alt="Phone Repair" class="card-image" style="width: 100px; height: auto;">
                 <h3>Parts Replacement</h3>
-                <p>Screen replacement Battery service Component replacement </p>
-                </p> And More!</p>
+                <p>Screen replacement Battery service Component replacement And More!</p>
             </div>
             <div class="card">
                 <img src="accessory.png" alt="Accessory" class="card-image" style="width: 100px; height: auto;">
@@ -203,17 +220,16 @@
                 <p>Screen Protectors, Phone Cases, Lens Protectors</p>
             </div>
             <div class="card">
-                <img src="device-unlocking.png" alt="Device Unlocking" class="card-image"
-                    style="width: 100px; height: auto;">
+                <img src="device-unlocking.png" alt="Device Unlocking" class="card-image" style="width: 100px; height: auto;">
                 <h3>Device Unlocking</h3>
                 <p>Regain Access to Your Device</p>
             </div>
             <div class="card">
-                <img src="software-support.png" alt="Software Support" class="card-image"
-                    style="width: 100px; height: auto;">
+                <img src="software-support.png" alt="Software Support" class="card-image" style="width: 100px; height: auto;">
                 <h3>Software Support</h3>
                 <p>Virus removal, OS installation, and technical support for all devices.</p>
             </div>
+        </div>
     </section>
 
     <script>
@@ -256,9 +272,9 @@
         });
     </script>
 
-    <div style="text-align: center; padding: 2em;">
+    <div style="text-align: center; padding: 2em; padding-top: 1em;">
         <h2>Our Rating (92%)</h2>
-        <p style="font-size: 3em; color: #2563eb;">★★★★⯪</p>
+        <p style="font-size: 3em; color: #2563eb; margin: 0.5em 0;">★★★★⯪</p>
         <p style="color: #666; font-size: 1.1em;">4.5 out of 5 stars</p>
     </div>
 
