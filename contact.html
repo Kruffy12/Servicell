@@ -31,14 +31,14 @@
             left: 0;
             right: 0;
             background-color: #2563eb;
-            padding: 1em;
+            padding: 0.75em;
             z-index: 1000;
             box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
         }
 
         nav form {
             display: flex;
-            gap: 1em;
+            gap: 0.5em;
             justify-content: center;
             flex-wrap: wrap;
         }
@@ -47,20 +47,17 @@
             background-color: #2563eb;
             color: white;
             border: none;
-            padding: 0.75em 1.5em;
+            padding: 0.5em 1em;
             cursor: pointer;
             border-radius: 10px;
             font-weight: bold;
-            font-size: 1rem;
-            transition: background-color 0.3s ease-in-out;
+            font-size: 1em;
+            text-decoration: none;
         }
 
         button:hover {
             background-color: #3b82f6;
-        }
-
-        button:active {
-            transform: scale(0.98);
+            transition: 0.3s ease-in-out;
         }
 
         a {
@@ -166,17 +163,13 @@
         }
 
         @media (max-width: 768px) {
-            nav {
-                padding: 0.75em;
-            }
-
             nav form {
-                gap: 0.5em;
+                gap: 0.25em;
             }
 
             button {
-                padding: 0.6em 1em;
-                font-size: 0.9rem;
+                padding: 0.4em 0.8em;
+                font-size: 0.9em;
             }
 
             main {
@@ -190,13 +183,9 @@
         }
 
         @media (max-width: 480px) {
-            nav form {
-                flex-direction: column;
-                gap: 0.5em;
-            }
-
             button {
-                width: 100%;
+                padding: 0.35em 0.6em;
+                font-size: 0.8em;
             }
 
             main {

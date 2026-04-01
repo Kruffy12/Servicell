@@ -78,6 +78,7 @@
             scroll-behavior: smooth;
             padding: 1rem;
             margin-top: 5em;
+            -webkit-overflow-scrolling: touch;
         }
 
         #carousel::-webkit-scrollbar {
@@ -289,7 +290,7 @@
                     carousel.scrollLeft += speed;
 
                     if (carousel.scrollLeft >= totalOriginalWidth) {
-                        carousel.scrollLeft -= totalOriginalWidth;
+                        carousel.scrollLeft = 0;
                     }
                 }
                 requestAnimationFrame(autoScroll);
