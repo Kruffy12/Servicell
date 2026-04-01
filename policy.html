@@ -21,7 +21,12 @@
             overflow-y: scroll;
         }
 
-        h1, h2, h3, h4, h5, h6 {
+        h1,
+        h2,
+        h3,
+        h4,
+        h5,
+        h6 {
             font-weight: 700;
             color: #2a3448;
             text-align: center;
@@ -72,8 +77,13 @@
         }
 
         @keyframes fadeIn {
-            from { opacity: 0; }
-            to { opacity: 1; }
+            from {
+                opacity: 0;
+            }
+
+            to {
+                opacity: 1;
+            }
         }
 
         .fade-in-element {
@@ -111,7 +121,25 @@
             margin-top: 2em;
         }
 
-        /* Mobile Responsive */
+        footer p {
+            color: #bbb;
+        }
+
+        footer .social-links a {
+            display: inline-flex;
+            align-items: center;
+            justify-content: center;
+            width: 2.5em;
+            height: 2.5em;
+            background-color: #3b82f6;
+            border-radius: 10%;
+            transition: background-color 0.3s ease-in-out;
+        }
+
+        .social-links a:hover {
+            background-color: #1e40af;
+        }
+
         @media (max-width: 768px) {
             nav form {
                 gap: 0.25em;
@@ -199,27 +227,50 @@
         </p>
 
         <div class="policy-section">
-            <h2 style="text-align: left;">Device Storage & Liability Policy</h2>
-            <h3 style="text-align: left;">Storage Duration</h3>
-            <p>Devices left for repair or service are the responsibility of the customer. Devices unclaimed for over 30 days from the service completion date may be considered abandoned.</p>
+            <h2 style="text-align: left;">The Fine Print (Made Simple)</h2>
 
-            <h3 style="text-align: left;">Liability Disclaimer</h3>
-            <p>ServiCell is not responsible for any loss, damage, or data on devices left beyond the storage period.</p>
+            <h3 style="text-align: left;">Picking Up Your Gear</h3>
+            <p>We know life gets busy! We’ll notify you as soon as your device is ready. However, we have limited shelf
+                space, so please try to pick up your device within 90 days. After that, we’ll consider it abandoned so
+                we can recover the cost of the parts and labor we put into it.</p>
 
-            <h3 style="text-align: left;">Data Responsibility</h3>
-            <p>Customers are strongly encouraged to back up their data prior to service.</p>
+            <h3 style="text-align: left;">Your Data is Precious</h3>
+            <p>We treat your photos and files with the utmost respect. That said, repairs can be unpredictable. To stay
+                safe, please back up your device before bringing it in. ServiCell isn't liable for data loss, but we’ll
+                always do our best to protect what’s yours.</p>
 
-            <h3 style="text-align: left;">Communication</h3>
-            <p>Customers will be notified via provided contact information when the device is ready for pickup.</p>
+            <h3 style="text-align: left;">Our Responsibility</h3>
+            <p>While your device is in our care, we treat it like our own. Once that 90-day window passes, however, we
+                can no longer be responsible for the device or any data on it. Help us help you by staying in touch!</p>
 
-            <h3 style="text-align: left;">Payment & Fees</h3>
-            <p>All repair and service fees must be settled before pickup.</p>
+            <h3 style="text-align: left;">Payment & Fair Play</h3>
+            <p>To keep our prices fair for everyone, we require all service fees to be settled before you take your
+                device home. We don't like holding onto your tech any longer than we have to!</p>
 
-            <h3 style="text-align: left;">Legal</h3>
-            <p>By leaving a device with ServiCell, the customer agrees to these terms.</p>
+            <h3 style="text-align: left;">The Handshake</h3>
+            <p>By leaving your device with us, you’re saying "I’m cool with these terms." If we ever need to update
+                these rules, we’ll post them right here immediately.</p>
 
-            <h3 style="text-align: left;">Policy Changes</h3>
-            <p>ServiCell reserves the right to modify these policies at any time. Changes will be effective immediately upon posting.</p>
+            <h3 style="text-align: left;">If You Supply the Parts</h3>
+            <p>We’re happy to help you install a screen or part you’ve already bought elsewhere! To keep things fair,
+                here is how that works:</p>
+
+            <ul style="color: #2a3448; line-height: 1.6; text-align: left; padding-left: 1.5em;">
+                <li><strong>Labor Only:</strong> When you bring your own part, you are only paying us for the
+                    <em>service</em> of installing it. We aren't the sellers of that part, so we can't guarantee the functionality or quality of the hardware itself.</li>
+                <li><strong>Defective Parts:</strong> If the screen you brought us turns out to be a "lemon" (dead
+                    pixels, touch issues, etc.), you’ll need to handle the return or exchange with the original person
+                    who sold it to you.</li>
+                <li><strong>Double the Work:</strong> If a part you supplied fails and you want us to swap it for a new
+                    one, a second labor fee will apply. We want to get it right the first time, but we can't do the work
+                    twice for free!</li>
+            </ul>
+
+            <p style="font-style: italic; background-color: #e0e7ff; padding: 10px; border-radius: 8px;">
+                <strong>Pro-Tip:</strong> Want a "Full Package" guarantee? Buy your parts directly from
+                <strong>ServiCell</strong>. When we provide the part AND the repair, we take 100% responsibility for
+                both!
+            </p>
         </div>
     </div>
 
@@ -229,7 +280,7 @@
             <a href="https://www.facebook.com/ServiCell-Belize-100064104937587/" target="_blank">f</a>
         </div>
         <p style="margin: 0.5em 0;">📍 #7 Douglas Jones Street, Belize City</p>
-        <p style="margin: 0.5em 0;">🕒 Mon-Sat: 8:00 AM - 8:00 PM | Sun: 9:00 AM - 7:00 PM</p>
+        <p style="margin: 0.5em 0;">🕒 Mon–Fri: 8 AM – 8 PM | Sat: 9 AM – 7 PM | Sun: Closed</p>
         <p style="margin: 0;">© 2026 ServiCell. All rights reserved.</p>
     </footer>
 </body>
