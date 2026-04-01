@@ -2,10 +2,11 @@
 <html>
 
 <head>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>ServiCell | Contact</title>
     <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
     <link rel="icon" href="favicon.png" type="image/png">
-        <style>
+    <style>
         body {
             font-family: 'Inter', system-ui, -apple-system, sans-serif;
             margin: 0;
@@ -13,6 +14,17 @@
             background-color: #f5f8ff;
             overflow-y: scroll;
             height: 100%;
+        }
+
+        @media (max-width: 600px) {
+            p {
+                text-align: left !important;
+            }
+
+            button {
+                min-height: 44px;
+
+            }
         }
 
         h1,
@@ -24,6 +36,11 @@
             font-weight: 700;
             color: #2a3448;
             text-align: center;
+        }
+
+        img {
+            max-width: 100%;
+            height: auto;
         }
 
         p {
@@ -46,6 +63,28 @@
             display: flex;
             gap: 1em;
             justify-content: center;
+            flex-wrap: wrap;
+
+        }
+
+
+        @media (max-width: 600px) {
+            nav {
+                padding: 0.75em;
+            }
+
+            nav form {
+                gap: 0.5em;
+            }
+
+            nav button {
+                flex: 1;
+                min-width: 70px;
+                padding: 0.6em 0.5em;
+                font-size: 0.95rem;
+
+                border-radius: 8px;
+            }
         }
 
         button {
@@ -99,7 +138,8 @@
         .logo {
             display: block;
             margin: 2em auto;
-            width: 250px;
+            max-width: 250px;
+            width: 80%;
             height: auto;
         }
 
@@ -212,38 +252,18 @@
     <br>
     <br>
     <br>
-        <h1>ServiCell | Contact</h1>
-          <img src="logo.png" alt="ServiCell Logo" class="logo">
-        <p class="tagline">"We Fix Everything, Even Broken Hearts."</p>
+    <h1>ServiCell | Contact</h1>
+    <img src="logo.png" alt="ServiCell Logo" class="logo">
+    <p class="tagline">"We Fix Everything, Even Broken Hearts."</p>
     <br>
     <br>
     <br>
-          <h1>Contact Us</h1>
-        <div class="contact-info">
-            <p>If you have any questions, need assistance, or want to learn more about our services, feel free to reach
-                out to us. We're here to help!</p>
-    <main>
-            <h3>Phone: +501 615-3388</h3>
-            <p>Alternatively, you can contact us via email.</p>
-
-            <form netlify netlify-honeypot="bot-field" name="contact" method="POST" action="/thank-you">
-                <input type="hidden" name="form-name" value="contact">
-                <div class="form-group">
-                    <label for="name">Name:</label>
-                    <input type="text" id="name" name="name" required>
-                </div>
-                <div class="form-group">
-                    <label for="email">Email:</label>
-                    <input type="email" id="email" name="email" required>
-                </div>
-                <div class="form-group">
-                    <label for="message">Message:</label>
-                    <textarea id="message" name="message" rows="5" required></textarea>
-                </div>
-                <button type="submit">Submit</button>
-            </form>
-        </div>
-    </main>
+    <h1>Contact Us</h1>
+    <div class="contact-info">
+        <p>If you have any questions, need assistance, or want to learn more about our services, feel free to reach
+            out to us. We're here to help!</p>
+        <h3><i>Phone #: +501 615-3388</i></h3>
+    </div>
 
     <footer>
         <h3>Follow Us</h3>
@@ -252,7 +272,7 @@
         </div>
         <div class="footer-info">
             <p>📍 #7 Douglas Jones Street, Belize City</p>
-            <p>🕒 Mon-Sat: 8:00 AM - 8:00 PM | Sun: 9:00 AM - 7:00 PM</p>
+            <p>🕒 Mon-Fri: 8:00 AM - 8:00 PM | Sat: 9:00 AM - 7:00 PM | Sun: CLOSED</p>
             <p>© 2026 ServiCell. All rights reserved.</p>
         </div>
     </footer>
