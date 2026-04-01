@@ -54,6 +54,7 @@
             flex-wrap: wrap;
         }
 
+        /* Use these exact rules in every file */
         button {
             background-color: #2563eb;
             color: white;
@@ -62,13 +63,48 @@
             cursor: pointer;
             border-radius: 10px;
             font-weight: bold;
-            font-size: 1rem;
-            text-decoration: none;
-            transition: 0.3s ease-in-out;
+            font-size: 1em;
+            transition: 0.3s ease-in-out; /* Proper transition placement */
         }
 
         button:hover {
             background-color: #3b82f6;
+        }
+
+        footer {
+            background-color: #2a3448;
+            color: white;
+            padding: 2em 1em;
+            text-align: center;
+            margin-top: 2em;
+        }
+
+        footer h3 {
+            color: white;
+            margin-bottom: 1em;
+        }
+
+        footer p {
+            margin: 0.5em 0;
+            color: #bbb;
+            text-align: center !important; /* Forces center on mobile */
+        }
+
+        footer .social-links a {
+            display: inline-flex;
+            align-items: center;
+            justify-content: center;
+            width: 2.5em;
+            height: 2.5em;
+            background-color: #3b82f6;
+            border-radius: 50%; /* Clean circles like modern apps */
+            color: white;
+            text-decoration: none;
+            transition: 0.3s ease-in-out;
+        }
+
+        .social-links a:hover {
+            background-color: #1e40af;
         }
 
         a {
