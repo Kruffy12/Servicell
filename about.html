@@ -8,6 +8,7 @@
     <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;600;700;800&display=swap"
         rel="stylesheet">
     <link rel="icon" href="favicon.png" type="image/png">
+    <link rel="stylesheet" href="css/nav.css">
 
     <style>
         :root {
@@ -63,43 +64,6 @@
             to {
                 transform: translate(30%, 30%);
             }
-        }
-
-        /* Floating Navigation */
-        nav {
-            position: fixed;
-            top: 25px;
-            left: 50%;
-            transform: translateX(-50%);
-            background: rgba(255, 255, 255, 0.8);
-            backdrop-filter: blur(15px);
-            -webkit-backdrop-filter: blur(15px);
-            padding: 8px 20px;
-            border-radius: 100px;
-            border: 1px solid var(--glass-border);
-            z-index: 1000;
-            display: flex;
-            gap: 5px;
-            box-shadow: 0 10px 30px rgba(37, 99, 235, 0.1);
-        }
-
-        nav button {
-            background: transparent;
-            color: var(--text-dim);
-            border: none;
-            font-weight: 700;
-            cursor: pointer;
-            padding: 10px 18px;
-            border-radius: 50px;
-            transition: 0.3s ease;
-            font-size: 0.85rem;
-            font-family: inherit;
-        }
-
-        nav button:hover,
-        nav button.active {
-            color: var(--primary);
-            background: rgba(37, 99, 235, 0.05);
         }
 
         .content-wrapper {
@@ -293,6 +257,57 @@
             }
         }
     </style>
+
+    <script>
+    // 1. Load the Navigation Component
+            fetch('components/nav.html')
+        .then(res => res.text())
+        .then(data => {
+                document.getElementById('nav-placeholder').innerHTML = data;
+
+            // 2. Set the "Active" link based on the current page
+            const links = document.querySelectorAll('.nav-btn');
+            const currentPath = window.location.pathname;
+            
+            links.forEach(link => {
+                if (currentPath.includes(link.getAttribute('href'))) {
+                link.classList.add('active');
+                }
+            });
+        })
+        .catch(err => console.error("Error loading navigation:", err));
+
+            // 3. Global Toggle Function (Accessible by the 'onclick' in your HTML)
+            function toggleMenu() {
+        const menu = document.getElementById('navLinks');
+            const burger = document.querySelector('.hamburger');
+
+            if (menu && burger) {
+                menu.classList.toggle('active');
+            burger.classList.toggle('active'); // Ensure CSS uses .hamburger.active span
+        }
+    }
+
+            // 4. Close menu when clicking outside or on a link
+            document.addEventListener('click', function (e) {
+        const menu = document.getElementById('navLinks');
+            const burger = document.querySelector('.hamburger');
+
+            // Close if clicking a link
+            if (e.target.classList.contains('nav-btn')) {
+                menu?.classList.remove('active');
+            burger?.classList.remove('active');
+        }
+
+            // Close if clicking outside the nav area
+            if (menu?.classList.contains('active')) {
+            if (!menu.contains(e.target) && !burger.contains(e.target)) {
+                menu.classList.remove('active');
+            burger.classList.remove('active');
+            }
+        }
+    });
+    </script>
 </head>
 
 <body class="fade-in-element">
@@ -301,13 +316,7 @@
         <div class="blob" style="width: 450px; height: 450px; bottom: 5%; right: -50px; background: #60a5fa;"></div>
     </div>
 
-    <nav>
-        <button onclick="window.location.href='index.html'">Home</button>
-        <button class="active" onclick="window.location.href='about.html'">About</button>
-        <button onclick="window.location.href='tracker.html'">Tracker</button>
-        <button onclick="window.location.href='policy.html'">Policy</button>
-        <button onclick="window.location.href='contact.html'">Contact</button>
-    </nav>
+    <div id="nav-placeholder"></div>
 
     <div class="content-wrapper">
         <div class="header-section">
@@ -474,6 +483,16 @@
             <p>© 2026 ServiCell Belize. All rights reserved.</p>
         </div>
     </footer>
+    <script>
+            function toggleMenu() {
+            const navLinks = document.getElementById("navLinks");
+            navLinks.classList.toggle("active");
+
+            // Optional: Animate hamburger into an 'X'
+            const spans = document.querySelectorAll(".hamburger span");
+            spans.forEach(span => span.classList.toggle("open"));
+        }
+    </script>
 </body>
 
 </html>
