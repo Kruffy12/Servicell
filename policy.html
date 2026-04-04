@@ -5,289 +5,511 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>ServiCell | Policy</title>
-    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;600;700;800&display=swap"
+        rel="stylesheet">
     <link rel="icon" href="favicon.png" type="image/png">
+
     <style>
+        :root {
+            --primary: #2563eb;
+            --accent: #3b82f6;
+            --bg-gradient: linear-gradient(135deg, #f8fafc 0%, #e2e8f0 100%);
+            --glass: rgba(255, 255, 255, 0.85);
+            --glass-border: rgba(37, 99, 235, 0.1);
+            --text-main: #1e293b;
+            --text-dim: #64748b;
+        }
+
         * {
             box-sizing: border-box;
+            margin: 0;
+            padding: 0;
         }
 
         body {
-            font-family: 'Inter', system-ui, -apple-system, sans-serif;
-            margin: 0;
-            padding: 0;
-            padding-top: 70px;
-            background-color: #f5f8ff;
-            overflow-y: scroll;
+            font-family: 'Plus Jakarta Sans', sans-serif;
+            background: var(--bg-gradient);
+            color: var(--text-main);
+            line-height: 1.6;
+            min-height: 100vh;
         }
 
-        h1,
-        h2,
-        h3,
-        h4,
-        h5,
-        h6 {
-            font-weight: 700;
-            color: #2a3448;
-            text-align: center;
-        }
-
-        p {
-            color: #2a3448;
-        }
-
-        nav {
+        /* Animated Background Blobs */
+        .bg-blobs {
             position: fixed;
             top: 0;
             left: 0;
-            right: 0;
-            background-color: #2563eb;
-            padding: 1em;
-            z-index: 1000;
-            box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+            width: 100%;
+            height: 100%;
+            z-index: -1;
+            overflow: hidden;
         }
 
-        nav form {
-            display: flex;
-            gap: 0.5em;
-            justify-content: center;
-            flex-wrap: wrap;
+        .blob {
+            position: absolute;
+            background: var(--primary);
+            filter: blur(100px);
+            border-radius: 50%;
+            opacity: 0.08;
+            animation: float 20s infinite alternate;
         }
 
-        button {
-            background-color: #2563eb;
-            color: white;
-            border: none;
-            padding: 0.5em 1em;
-            cursor: pointer;
-            border-radius: 10px;
-            font-weight: bold;
-            font-size: 1rem;
-            text-decoration: none;
-            transition: 0.3s ease-in-out;
-        }
-
-        button:hover {
-            background-color: #3b82f6;
-        }
-
-        a {
-            color: white;
-            text-decoration: none;
-        }
-
-        @keyframes fadeIn {
+        @keyframes float {
             from {
-                opacity: 0;
+                transform: translate(0, 0);
             }
 
             to {
-                opacity: 1;
+                transform: translate(20%, 20%);
             }
         }
 
-        .fade-in-element {
-            opacity: 0;
-            animation: fadeIn 1.5s forwards;
+        /* Unified Navigation */
+        nav {
+            position: fixed;
+            top: 25px;
+            left: 50%;
+            transform: translateX(-50%);
+            background: rgba(255, 255, 255, 0.8);
+            backdrop-filter: blur(15px);
+            -webkit-backdrop-filter: blur(15px);
+            padding: 8px 20px;
+            border-radius: 100px;
+            border: 1px solid var(--glass-border);
+            z-index: 1000;
+            display: flex;
+            gap: 5px;
+            box-shadow: 0 10px 30px rgba(37, 99, 235, 0.1);
         }
 
-        .content {
-            max-width: 800px;
+        nav button {
+            background: transparent;
+            color: var(--text-dim);
+            border: none;
+            font-weight: 700;
+            cursor: pointer;
+            padding: 10px 18px;
+            border-radius: 50px;
+            transition: 0.3s ease;
+            font-size: 0.85rem;
+            font-family: inherit;
+        }
+
+        nav button:hover,
+        nav button.active {
+            color: var(--primary);
+            background: rgba(37, 99, 235, 0.05);
+        }
+
+        /* Content Layout */
+        .content-wrapper {
+            padding: 140px 1.5rem 4rem;
+            max-width: 900px;
             margin: 0 auto;
-            padding: 1em;
-            margin-top: 0;
         }
 
-        .logo {
-            display: block;
-            margin: 2em auto;
-            width: 250px;
-            max-width: 90%;
-            height: auto;
-        }
-
-        .policy-section {
-            font-size: 1em;
-            line-height: 1.8;
-            color: #333;
-            text-align: justify;
-        }
-
-        footer {
-            background-color: #2a3448;
-            color: white;
-            padding: 2em 1em;
+        .header-section {
             text-align: center;
-            margin-top: 2em;
+            margin-bottom: 3rem;
+        }
+
+        .header-section h1 {
+            font-size: 2.5rem;
+            font-weight: 800;
+            letter-spacing: -1.5px;
+        }
+
+        .header-section p {
+            color: var(--text-dim);
+            font-weight: 600;
+            margin-top: 0.5rem;
+        }
+
+        /* Policy Card */
+        .policy-card {
+            background: var(--glass);
+            backdrop-filter: blur(10px);
+            -webkit-backdrop-filter: blur(10px);
+            padding: 3.5rem;
+            border-radius: 35px;
+            border: 1px solid var(--glass-border);
+            box-shadow: 0 20px 40px rgba(0, 0, 0, 0.03);
+        }
+
+        .policy-num {
+            display: inline-block;
+            background: var(--primary);
+            color: white;
+            width: 32px;
+            height: 32px;
+            text-align: center;
+            line-height: 32px;
+            border-radius: 8px;
+            font-weight: 800;
+            margin-right: 12px;
+        }
+
+        .section-header {
+            display: flex;
+            align-items: center;
+            margin: 2.5rem 0 1.5rem;
+            padding-bottom: 0.75rem;
+            border-bottom: 2px solid #f1f5f9;
+            font-size: 1.5rem;
+            font-weight: 800;
+        }
+
+        h3 {
+            margin: 1.5rem 0 0.5rem;
+            color: var(--primary);
+            font-size: 1.1rem;
+        }
+
+        p {
+            margin-bottom: 1rem;
+            color: #475569;
+        }
+
+        ul {
+            margin: 1rem 0 1.5rem 1.5rem;
+            color: #475569;
+        }
+
+        li {
+            margin-bottom: 0.5rem;
+        }
+
+        .pro-tip {
+            background: #eff6ff;
+            border-left: 5px solid var(--primary);
+            padding: 1.5rem;
+            border-radius: 15px;
+            margin: 2rem 0;
+            font-size: 0.95rem;
+        }
+
+        /* Print Button */
+        .print-btn {
+            position: fixed;
+            bottom: 30px;
+            right: 30px;
+            background: var(--primary);
+            color: white;
+            border: none;
+            padding: 15px 25px;
+            border-radius: 50px;
+            font-weight: 700;
+            cursor: pointer;
+            box-shadow: 0 10px 20px rgba(37, 99, 235, 0.3);
+            transition: 0.3s;
+            z-index: 100;
+        }
+
+        .print-btn:hover {
+            transform: translateY(-3px);
+            background: var(--accent);
+        }
+
+        /* Footer */
+        footer {
+            background: #111827;
+            padding: 4rem 2rem;
+            color: #94a3b8;
+            margin-top: 4rem;
+            text-align: center;
         }
 
         footer p {
-            color: #bbb;
+            color: #ffffff !important;
+            /* Forces the text to stay white/readable */
+            margin-bottom: 0.8rem;
+            /* Overrides the 1rem policy margin */
         }
 
-        footer .social-links a {
-            display: inline-flex;
-            align-items: center;
-            justify-content: center;
-            width: 2.5em;
-            height: 2.5em;
-            background-color: #3b82f6;
-            border-radius: 10%;
-            transition: background-color 0.3s ease-in-out;
+        footer .contact-item {
+            color: #ffffff !important;
         }
 
-        .social-links a:hover {
-            background-color: #1e40af;
-        }
+        /* PRINT STYLES */
+        @media print {
 
-        @media (max-width: 768px) {
-            nav form {
-                gap: 0.25em;
+            nav,
+            .bg-blobs,
+            .print-btn,
+            footer {
+                display: none !important;
             }
 
-            button {
-                padding: 0.4em 0.7em;
-                font-size: 0.9rem;
+            body {
+                background: white;
+                color: black;
             }
 
-            h1 {
-                font-size: 1.8em;
+            .content-wrapper {
+                padding: 0;
+                margin: 0;
+                max-width: 100%;
             }
 
-            h2 {
-                font-size: 1.4em;
+            .policy-card {
+                background: white;
+                border: none;
+                box-shadow: none;
+                backdrop-filter: none;
+                padding: 0;
+            }
+
+            .policy-num {
+                background: black;
+            }
+
+            .section-header {
+                border-bottom: 2px solid black;
+                color: black;
             }
 
             h3 {
-                font-size: 1.1em;
+                color: black;
+                text-decoration: underline;
             }
 
-            .content {
-                padding: 1em 0.5em;
-            }
-
-            .logo {
-                width: 200px;
-            }
-
-            .policy-section {
-                font-size: 1em;
-                text-align: left;
-            }
-
-            p {
-                text-align: left;
-            }
-
-            footer {
-                padding: 1.5em 0.5em;
+            .pro-tip {
+                border: 1px solid #ccc;
+                background: white;
             }
         }
 
-        footer p {
-            text-align: center !important;
-        }
-
-        @media (max-width: 480px) {
-            button {
-                padding: 0.35em 0.6em;
-                font-size: 0.85rem;
+        @media (max-width: 768px) {
+            .content-wrapper {
+                padding-top: 100px;
             }
 
-            h1 {
-                font-size: 1.5em;
+            .policy-card {
+                padding: 1.5rem;
+                border-radius: 20px;
             }
 
-            .logo {
-                width: 150px;
+            nav {
+                width: 95%;
             }
 
-            .policy-section {
-                font-size: 0.95em;
+            nav button {
+                padding: 8px 10px;
+                font-size: 0.75rem;
             }
         }
     </style>
 </head>
 
-<body class="fade-in-element">
+<body>
+    <div class="bg-blobs">
+        <div class="blob" style="width: 500px; height: 500px; top: -100px; right: -100px;"></div>
+        <div class="blob" style="width: 400px; height: 400px; bottom: -50px; left: -50px; background: #60a5fa;"></div>
+    </div>
+
     <nav>
-        <form>
-            <button type="button" onclick="window.location.href='index.html'">Home</button>
-            <button type="button" onclick="window.location.href='about.html'">About</button>
-            <button type="button" onclick="window.location.href='policy.html'">Policy</button>
-            <button type="button" onclick="window.location.href='contact.html'">Contact</button>
-        </form>
+        <button onclick="window.location.href='index.html'">Home</button>
+        <button onclick="window.location.href='about.html'">About</button>
+        <button onclick="window.location.href='tracker.html'">Tracker</button>
+        <button class="active" onclick="window.location.href='policy.html'">Policy</button>
+        <button onclick="window.location.href='contact.html'">Contact</button>
     </nav>
 
-    <div class="content">
-        <h1>ServiCell | Policy Page</h1>
-        <img src="logo.png" alt="ServiCell Logo" class="logo">
-        <h2><i>"We Fix Everything, Even Broken Hearts."</i></h2>
+    <button class="print-btn" onclick="window.print()">🖨️ Print Policy</button>
 
-        <h1 style="margin-top: 2em;">Our Policies</h1>
-        <p style="font-size: 1em; line-height: 1.6;">
-            At ServiCell, we are committed to providing our customers with the highest quality service and support. Our
-            policies are designed to ensure transparency, fairness, and customer satisfaction.
-        </p>
+    <div class="content-wrapper">
+        <div class="header-section">
+            <img src="logo.png" alt="ServiCell Logo" style="width: 180px; margin-bottom: 1rem;">
+            <h1>Service Policies</h1>
+            <p>Last Updated: April 3, 2026</p>
+        </div>
 
-        <div class="policy-section">
-            <h2 style="text-align: left;">The Fine Print (Made Simple)</h2>
+        <div class="policy-card">
+            <p style="text-align: center; font-size: 1.1rem; margin-bottom: 2rem;">
+                At ServiCell, we believe in transparent repairs. These policies ensure we provide the best care for your
+                technology and keep our prices fair for everyone in Belize City.
+            </p>
 
-            <h3 style="text-align: left;">Picking Up Your Gear</h3>
-            <p>We know life gets busy! We’ll notify you as soon as your device is ready. However, we have limited shelf
-                space, so please try to pick up your device within 90 days. After that, we’ll consider it abandoned so
-                we can recover the cost of the parts and labor we put into it.</p>
+            <div class="section-header">
+                <span class="policy-num">1</span> Before the Repair
+            </div>
+            <h3>Backup Your Data</h3>
+            <p>
+                Repairs can be unpredictable, especially with hardware logic board issues. <strong>Please back up your
+                    device</strong> (iCloud, Google Drive, or PC) before drop-off. ServiCell is not liable for data
+                loss, though we prioritize data safety in every repair.
+            </p>
 
-            <h3 style="text-align: left;">Your Data is Precious</h3>
-            <p>We treat your photos and files with the utmost respect. That said, repairs can be unpredictable. To stay
-                safe, please back up your device before bringing it in. ServiCell isn't liable for data loss, but we’ll
-                always do our best to protect what’s yours.</p>
+            <div class="section-header">
+                <span class="policy-num">2</span> During the Repair
+            </div>
+            <h3>Hidden Damage</h3>
+            <p>
+                Cracked screens can hide deeper motherboard or impact damage. If we discover additional issues upon
+                opening the device, we will contact you immediately before proceeding.
+            </p>
 
-            <h3 style="text-align: left;">Our Responsibility</h3>
-            <p>While your device is in our care, we treat it like our own. Once that 90-day window passes, however, we
-                can no longer be responsible for the device or any data on it. Help us help you by staying in touch!</p>
+            <h3>Water Resistance</h3>
+            <p>
+                Opening a factory-sealed device breaks the original waterproof bond. While we use high-grade industrial
+                adhesives to reseal your phone, we <strong>cannot guarantee</strong> original water-resistance ratings.
+                Keep repaired devices away from water.
+            </p>
 
-            <h3 style="text-align: left;">Payment & Fair Play</h3>
-            <p>To keep our prices fair for everyone, we require all service fees to be settled before you take your
-                device home. We don't like holding onto your tech any longer than we have to!</p>
-
-            <h3 style="text-align: left;">The Handshake</h3>
-            <p>By leaving your device with us, you’re saying "I’m cool with these terms." If we ever need to update
-                these rules, we’ll post them right here immediately.</p>
-
-            <h3 style="text-align: left;">If You Supply the Parts</h3>
-            <p>We’re happy to help you install a screen or part you’ve already bought elsewhere! To keep things fair,
-                here is how that works:</p>
-
-            <ul style="color: #2a3448; line-height: 1.6; text-align: left; padding-left: 1.5em;">
-                <li><strong>Labor Only:</strong> When you bring your own part, you are only paying us for the
-                    <em>service</em> of installing it. We aren't the sellers of that part, so we can't guarantee the
-                    functionality or quality of the hardware itself.
-                </li>
-                <li><strong>Defective Parts:</strong> If the screen you brought us turns out to be a "lemon" (dead
-                    pixels, touch issues, etc.), you’ll need to handle the return or exchange with the original person
-                    who sold it to you.</li>
-                <li><strong>Double the Work:</strong> If a part you supplied fails and you want us to swap it for a new
-                    one, a second labor fee will apply. We want to get it right the first time, but we can't do the work
-                    twice for free!</li>
+            <h3>Customer-Supplied Parts</h3>
+            <p>If you bring your own screen or battery for us to install:</p>
+            <ul>
+                <li><strong>Labor Only:</strong> You are paying for the technical service. We do not warranty the
+                    quality or lifespan of parts we didn't source. This means ServiCell is responsible only for the
+                    installation work, not the part itself.</li>
+                <li><strong>Defective Parts:</strong> If your part is a "lemon" (a defective product that fails shortly
+                    after purchase due to manufacturing flaws), you must handle the return or warranty claim with your
+                    original seller. ServiCell cannot process returns on third-party parts.</li>
+                <li><strong>Double Labor:</strong> If a part you supplied fails and needs replacement, a second labor
+                    fee will apply for the removal and reinstallation of a new part. We recommend using
+                    ServiCell-sourced parts to avoid additional costs.</li>
             </ul>
 
-            <p style="font-style: italic; background-color: #e0e7ff; padding: 10px; border-radius: 8px;">
-                <strong>Pro-Tip:</strong> Want a "Full Package" guarantee? Buy your parts directly from
-                <strong>ServiCell</strong>. When we provide the part AND the repair, we take 100% responsibility for
-                both!
+            <div class="pro-tip">
+                <strong>ServiCell Pro-Tip:</strong> Want a full peace-of-mind guarantee? Buy your parts directly from
+                us. When we provide both the part and the labor, we take 100% responsibility for the fix!
+            </div>
+
+            <div class="section-header">
+                <span class="policy-num">3</span> After the Repair
+            </div>
+            <h3>The 3-Day Test Drive</h3>
+            <p>
+                We want you to be sure! You have a <strong>3-day window</strong> from the time of pickup to report any
+                issues with the installed part. If it’s not working perfectly, bring it back and we’ll make it right
+                immediately.
+            </p>
+
+            <div class="section-header">
+                <span class="policy-num">4</span> Pickup & Abandonment
+            </div>
+            <h3>90-Day Storage Rule</h3>
+            <p>
+                We value your tech, but we have limited space. Devices not picked up within <strong>90 days</strong> of
+                the "Ready for Pickup" notification will be considered abandoned and may be sold or recycled to recover
+                repair costs.
+            </p>
+            <p>
+                <strong>Track Your Repair:</strong> Use our <a href="tracker.html"
+                    style="color: var(--primary); text-decoration: none; font-weight: 600;">Repair Tracker</a> to
+                monitor your device status and receive timely pickup reminders.
+            </p>
+
+            <div class="section-header">
+                <span class="policy-num">5</span> Agreement
+            </div>
+            <p>
+                By leaving your device at ServiCell (#7 Douglas Jones Street), you agree to the terms listed above. We
+                appreciate your trust in our technicians!
+            </p>
+
+            <p style="text-align: center; margin-top: 4rem; opacity: 0.5; font-size: 0.8rem; letter-spacing: 2px;">
+                — END OF SERVICE POLICY —
             </p>
         </div>
     </div>
 
-    <footer>
-        <h3 style="color: white; text-align: center; margin-top: 0;">Follow Us</h3>
-        <div style="display: flex; gap: 1em; justify-content: center; font-size: 1.5em; margin-bottom: 1.5em;">
-            <a href="https://www.facebook.com/ServiCell-Belize-100064104937587/" target="_blank">f</a>
+    <footer style="background: #111827; padding: 3rem 1.5rem; color: #cbd5e1; border-top: 4px solid var(--primary);">
+        <style>
+            /* Mobile-specific stacking logic */
+            .footer-grid {
+                max-width: 1200px;
+                margin: 0 auto;
+                display: grid;
+                grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+                gap: 2.5rem;
+            }
+
+            @media (max-width: 600px) {
+                .footer-grid {
+                    grid-template-columns: 1fr;
+                    text-align: center;
+                }
+
+                .brand-wrapper,
+                .contact-item {
+                    justify-content: center !important;
+                }
+
+                .social-links {
+                    justify-content: center;
+                }
+            }
+        </style>
+
+        <div class="footer-grid">
+            <div>
+                <div class="brand-wrapper" style="display: flex; align-items: center; gap: 12px; margin-bottom: 1rem;">
+                    <img src="logo.png" alt="ServiCell Logo" style="width: 100px; height: auto;">
+                    <h3 style="color: white; font-size: 1.4rem; font-weight: 800; margin: 0;">ServiCell Belize<span
+                            style="color: var(--primary);">.</span></h3>
+                </div>
+                <p style="line-height: 1.6; font-size: 0.9rem; margin-bottom: 1.5rem; color: #94a3b8;">
+                    Expert mobile repairs and technology solutions in the heart of Belize City. Trusted quality,
+                    professional service.
+                </p>
+
+                <div class="social-container" style="display: flex; flex-direction: column; gap: 10px;">
+                    <span
+                        style="color: white; font-size: 0.8rem; font-weight: 700; text-transform: uppercase; letter-spacing: 1px;">Follow
+                        Us!</span>
+                    <div class="social-links" style="display: flex; gap: 15px;">
+                        <a href="https://www.facebook.com/ServiCell-Belize-100064104937587/" target="_blank"
+                            style="background: #1877f2; color: white; width: 38px; height: 38px; border-radius: 10px; display: flex; align-items: center; justify-content: center; text-decoration: none; font-weight: 900; transition: 0.3s;"
+                            onmouseover="this.style.transform='scale(1.1)'"
+                            onmouseout="this.style.transform='scale(1)'">f</a>
+                    </div>
+                </div>
+            </div>
+
+            <div>
+                <h4
+                    style="color: white; font-weight: 700; margin-bottom: 1.2rem; text-transform: uppercase; font-size: 0.8rem; letter-spacing: 1px;">
+                    Visit Us</h4>
+                <p class="contact-item"
+                    style="margin-bottom: 0.8rem; display: flex; align-items: center; gap: 10px; font-size: 0.9rem; color: white;">
+                    <span style="color: var(--primary);">📍</span> #7 Douglas Jones Street, Belize City
+                </p>
+                <p class="contact-item"
+                    style="margin-bottom: 0.8rem; display: flex; align-items: center; gap: 10px; font-size: 0.9rem; color: white;">
+                    <span style="color: var(--primary);">📞</span> +501 615-3388
+                </p>
+                <p class="contact-item"
+                    style="display: flex; align-items: center; gap: 10px; font-size: 0.9rem; color: white;">
+                    <span style="color: var(--primary);">✉️</span> servicellbze@gmail.com
+                </p>
+            </div>
+
+            <div>
+                <h4
+                    style="color: white; font-weight: 700; margin-bottom: 1.2rem; text-transform: uppercase; font-size: 0.8rem; letter-spacing: 1px;">
+                    Business Hours</h4>
+                <div
+                    style="display: flex; justify-content: space-between; margin-bottom: 0.6rem; border-bottom: 1px solid rgba(255,255,255,0.05); padding-bottom: 0.4rem; font-size: 0.9rem; color: #cbd5e1;">
+                    <span>Mon – Fri</span>
+                    <span style="color: white; font-weight: 600;">8:00 AM – 8:00 PM</span>
+                </div>
+                <div
+                    style="display: flex; justify-content: space-between; margin-bottom: 0.6rem; border-bottom: 1px solid rgba(255,255,255,0.05); padding-bottom: 0.4rem; font-size: 0.9rem; color: #cbd5e1;">
+                    <span>Saturday</span>
+                    <span style="color: white; font-weight: 600;">9:00 AM – 7:00 PM</span>
+                </div>
+                <div style="display: flex; justify-content: space-between; font-size: 0.9rem; color: #cbd5e1;">
+                    <span>Sunday</span>
+                    <span style="color: #ef4444; font-weight: 700;">Closed</span>
+                </div>
+            </div>
         </div>
-        <p style="margin: 0.5em 0;">📍 #7 Douglas Jones Street, Belize City</p>
-        <p style="margin: 0.5em 0;">🕒 Mon–Fri: 8 AM – 8 PM | Sat: 9 AM – 7 PM | Sun: Closed</p>
-        <p style="margin: 0;">© 2026 ServiCell. All rights reserved.</p>
+
+        <div
+            style="margin-top: 3rem; padding-top: 1.5rem; border-top: 1px solid rgba(255,255,255,0.05); font-size: 0.75rem; text-align: center; color: #64748b;">
+            <p>© 2026 ServiCell Belize. All rights reserved.</p>
+        </div>
     </footer>
 </body>
 

@@ -1,82 +1,153 @@
 <!DOCTYPE html>
-<html>
+<html lang="en">
 
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>ServiCell | Home</title>
-    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;600;700;800&display=swap"
+        rel="stylesheet">
     <link rel="icon" href="favicon.png" type="image/png">
+
     <style>
+        :root {
+            --primary: #2563eb;
+            --accent: #3b82f6;
+            --bg-gradient: linear-gradient(135deg, #f8fafc 0%, #e2e8f0 100%);
+            --glass: rgba(255, 255, 255, 0.85);
+            --glass-border: rgba(37, 99, 235, 0.1);
+            --text-main: #0f172a;
+            --text-dim: #64748b;
+        }
+
         * {
             box-sizing: border-box;
+            margin: 0;
+            padding: 0;
         }
 
         body {
-            font-family: 'Inter', system-ui, -apple-system, sans-serif;
-            margin: 0;
-            padding: 0;
-            background-color: #f5f8ff;
-            overflow-y: scroll;
+            font-family: 'Plus Jakarta Sans', sans-serif;
+            background: var(--bg-gradient);
+            color: var(--text-main);
+            min-height: 100vh;
+            overflow-x: hidden;
         }
 
-        h1,
-        h2,
-        h3,
-        h4,
-        h5,
-        h6 {
-            font-weight: 700;
-            color: #2a3448;
-            text-align: center;
-        }
-
-        nav {
+        /* Animated Background Blobs (From Tracker) */
+        .bg-blobs {
             position: fixed;
             top: 0;
             left: 0;
-            right: 0;
-            background-color: #2563eb;
-            padding: 0.75em;
+            width: 100%;
+            height: 100%;
+            z-index: -1;
+            overflow: hidden;
+        }
+
+        .blob {
+            position: absolute;
+            background: var(--primary);
+            filter: blur(100px);
+            border-radius: 50%;
+            opacity: 0.1;
+            animation: move 25s infinite alternate;
+        }
+
+        @keyframes move {
+            from {
+                transform: translate(-10%, -10%);
+            }
+
+            to {
+                transform: translate(30%, 30%);
+            }
+        }
+
+        /* Floating Navigation (Unified Style) */
+        nav {
+            position: fixed;
+            top: 25px;
+            left: 50%;
+            transform: translateX(-50%);
+            background: rgba(255, 255, 255, 0.8);
+            backdrop-filter: blur(15px);
+            -webkit-backdrop-filter: blur(15px);
+            padding: 8px 20px;
+            border-radius: 100px;
+            border: 1px solid var(--glass-border);
             z-index: 1000;
-            box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
-        }
-
-        nav form {
             display: flex;
-            gap: 0.5em;
-            justify-content: center;
-            flex-wrap: wrap;
+            gap: 5px;
+            box-shadow: 0 10px 30px rgba(37, 99, 235, 0.1);
         }
 
-        button {
-            background-color: #2563eb;
-            color: white;
+        nav button {
+            background: transparent;
+            color: var(--text-dim);
             border: none;
-            padding: 0.5em 1em;
+            font-weight: 700;
             cursor: pointer;
-            border-radius: 10px;
-            font-weight: bold;
-            font-size: 1em;
-            transition: 0.3s ease-in-out;
+            padding: 10px 18px;
+            border-radius: 50px;
+            transition: 0.3s ease;
+            font-size: 0.85rem;
+            font-family: inherit;
         }
 
-        button:hover {
-            background-color: #3b82f6;
+        nav button:hover,
+        nav button.active {
+            color: var(--primary);
+            background: rgba(37, 99, 235, 0.05);
         }
 
-        /* DESKTOP CAROUSEL (The Primary Style) */
+        /* Hero Styling */
+        .hero {
+            padding-top: 140px;
+            text-align: center;
+        }
+
+        .hero h1 {
+            font-size: 2.5rem;
+            font-weight: 800;
+            letter-spacing: -1.5px;
+            color: var(--text-main);
+            margin-bottom: 0.5rem;
+        }
+
+        .hero i {
+            color: var(--primary);
+            font-style: normal;
+            font-weight: 600;
+            display: block;
+            margin-top: 10px;
+        }
+
+        /* Services Section */
+        section {
+            padding: 4rem 1rem;
+            max-width: 1200px;
+            margin: 0 auto;
+        }
+
+        .section-title {
+            text-align: center;
+            margin-bottom: 3rem;
+            font-weight: 800;
+            text-transform: uppercase;
+            letter-spacing: 2px;
+            font-size: 0.9rem;
+            color: var(--primary);
+        }
+
+        /* Carousel with Glass Cards */
         #carousel {
             display: flex;
-            gap: 1.5rem;
+            gap: 2rem;
             overflow-x: auto;
-            scroll-behavior: smooth;
-            padding: 2rem;
-            margin: 5em auto 0 auto;
-            /* Centers the carousel */
-            max-width: 1200px;
-            /* Keeps it from being too wide on PC */
-            -webkit-overflow-scrolling: touch;
+            scroll-behavior: auto;
+            /* Change to 'auto' so the jump is invisible */
+            padding: 20px;
             -ms-overflow-style: none;
             scrollbar-width: none;
         }
@@ -87,195 +158,292 @@
 
         .card {
             flex: 0 0 300px;
-            /* Nice big cards for Desktop */
-            background: #fff;
-            padding: 2rem;
-            border-radius: 16px;
-            box-shadow: 0 4px 15px rgba(0, 0, 0, 0.05);
+            background: var(--glass);
+            backdrop-filter: blur(10px);
+            -webkit-backdrop-filter: blur(10px);
+            padding: 2.5rem 2rem;
+            border-radius: 35px;
+            border: 1px solid var(--glass-border);
             text-align: center;
-            transition: 0.3s ease-in-out;
+            transition: 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+            box-shadow: 0 20px 40px rgba(0, 0, 0, 0.03);
         }
 
         .card:hover {
-            box-shadow: 0 8px 20px rgba(0, 0, 0, 0.15);
-            transform: translateY(-5px);
+            transform: translateY(-10px) scale(1.02);
+            border-color: var(--primary);
+            box-shadow: 0 30px 60px rgba(37, 99, 235, 0.1);
         }
 
         .card-image {
-            width: 100px;
+            width: 80px;
+            margin-bottom: 1.5rem;
+        }
+
+        .card h3 {
+            font-size: 1.2rem;
             margin-bottom: 1rem;
+            color: var(--text-main);
         }
 
-        section {
-            padding: 1rem;
+        .card p {
+            font-size: 0.9rem;
+            color: var(--text-dim);
+            line-height: 1.5;
         }
 
-        footer {
-            background-color: #2a3448;
-            color: white;
-            padding: 2em 1em;
-            text-align: center;
+        /* Rating Section */
+        .rating-box {
+            background: white;
+            margin: 2rem auto;
+            max-width: 400px;
+            padding: 2.5rem;
+            border-radius: 40px;
+            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.02);
         }
 
-        /* TABLET VIEW */
+        /* Responsive */
         @media (max-width: 768px) {
-            .card {
-                flex: 0 0 250px;
-            }
-
-            img[alt="ServiCell Logo"] {
-                width: 180px !important;
-            }
-        }
-
-        /* MOBILE VIEW */
-        @media (max-width: 480px) {
-            button {
-                padding: 0.35em 0.6em;
-                font-size: 0.8em;
-            }
-
-            #carousel {
-                gap: 1rem;
-                padding: 1rem;
+            .hero h1 {
+                font-size: 2rem;
             }
 
             .card {
-                flex: 0 0 200px;
-                padding: 1.5rem;
+                flex: 0 0 260px;
             }
 
-            .card-image {
-                width: 70px !important;
+            nav {
+                width: 90%;
+                justify-content: center;
+                top: 15px;
             }
 
-            footer p {
-                color: #bbb;
-                font-size: 0.85em;
+            nav button {
+                padding: 8px 12px;
+                font-size: 0.75rem;
             }
-
-
         }
 
-        a {
+        /* Footer Override (Dark theme consistent with Tracker) */
+        footer {
+            background: #111827;
+            padding: 4rem 2rem;
+            color: #94a3b8;
+            margin-top: 4rem;
+            border-top: 4px solid var(--primary);
+        }
+
+        footer p {
+            color: #ffffff !important;
+            /* Forces the text to stay white/readable */
+            margin-bottom: 0.8rem;
+            /* Overrides the 1rem policy margin */
+        }
+
+        footer .contact-item {
+            color: #ffffff !important;
+        }
+
+        footer a {
             color: white;
             text-decoration: none;
-        }
-
-        @keyframes fadeIn {
-            from {
-                opacity: 0;
-            }
-
-            to {
-                opacity: 1;
-            }
-        }
-
-        .fade-in-element {
-            animation: fadeIn 1.5s forwards;
+            font-size: 1.5rem;
         }
     </style>
 </head>
 
-<body class="fade-in-element">
+<body>
+    <div class="bg-blobs">
+        <div class="blob" style="width: 600px; height: 600px; top: -150px; left: -150px;"></div>
+        <div class="blob" style="width: 400px; height: 400px; bottom: 10%; right: -50px; background: #60a5fa;"></div>
+    </div>
+
     <nav>
-        <form>
-            <button type="button" onclick="window.location.href='index.html'">Home</button>
-            <button type="button" onclick="window.location.href='about.html'">About</button>
-            <button type="button" onclick="window.location.href='policy.html'">Policy</button>
-            <button type="button" onclick="window.location.href='contact.html'">Contact</button>
-        </form>
+        <button class="active" onclick="window.location.href='index.html'">Home</button>
+        <button onclick="window.location.href='about.html'">About</button>
+        <button onclick="window.location.href='tracker.html'">Tracker</button>
+        <button onclick="window.location.href='policy.html'">Policy</button>
+        <button onclick="window.location.href='contact.html'">Contact</button>
     </nav>
-    <br><br><br><br><br>
-    <h1>ServiCell | Home Page</h1>
-    <img src="logo.png" alt="ServiCell Logo" style="display: block; margin: 1em auto; width: 250px;">
-    <h2><i>"We Fix Everything, Even Broken Hearts."</i></h2>
+
+    <div class="hero">
+        <img src="logo.png" alt="ServiCell Logo" style="width: 220px; margin-bottom: 1.5rem;">
+        <h1>ServiCell Belize</h1>
+        <i>"We Fix Everything, Even Broken Hearts."</i>
+    </div>
 
     <section>
-        <h1>Our Services:</h1>
+        <h2 class="section-title">Our Specialized Services</h2>
         <div id="carousel">
             <div class="card">
                 <img src="device-repair.png" alt="Phone Repair" class="card-image">
                 <h3>Parts Replacement</h3>
-                <p>Screen replacement Battery service Component replacement and More!</p>
+                <p>Expert screen, battery, and internal component replacements for Samsung and iPhone.</p>
             </div>
             <div class="card">
                 <img src="accessory.png" alt="Accessory" class="card-image">
-                <h3>Sold Accessories</h3>
-                <p>Screen Protectors, Phone Cases, Lens Protectors</p>
+                <h3>Premium Protection</h3>
+                <p>High-grade screen protectors, cases, and lens covers to keep your tech safe.</p>
             </div>
             <div class="card">
                 <img src="device-unlocking.png" alt="Device Unlocking" class="card-image">
-                <h3>Device Unlocking</h3>
-                <p>Regain Access to Your Device</p>
+                <h3>Carrier Unlocking</h3>
+                <p>Factory unlocks and region bypasses to get your device back on any network.</p>
             </div>
             <div class="card">
                 <img src="software-support.png" alt="Software Support" class="card-image">
-                <h3>Software Support</h3>
-                <p>Virus removal, OS installation, and technical support for all devices.</p>
+                <h3>Software Solutions</h3>
+                <p>System recovery, virus removal, and expert modding for Android and iOS.</p>
             </div>
         </div>
     </section>
 
-    <div style="text-align: center; padding: 2em 1em;">
-        <h2>Our Rating (92%)</h2>
-        <p style="font-size: 2em; color: #2563eb;">★★★★⯪</p>
-        <p style="color: #666; font-size: 1em;">4.5 out of 5 stars</p>
+    <div class="rating-box" style="text-align: center;">
+        <h2 style="font-size: 0.8rem; letter-spacing: 2px; color: var(--text-dim); text-transform: uppercase;">Customer
+            Satisfaction</h2>
+        <p style="font-size: 2.5rem; color: var(--primary); margin: 10px 0;">★★★★⯪</p>
+        <p style="font-weight: 800; font-size: 1.2rem;">4.5 / 5.0</p>
+        <p style="color: var(--text-dim); font-size: 0.85rem; margin-top: 5px;">Based on 500+ local repairs</p>
     </div>
 
-    <footer>
-        <div style="margin-bottom: 1.5em;">
-            <h3 style="color: white;">Follow Us</h3>
-            <div style="display: flex; gap: 1em; justify-content: center; font-size: 1.5em;">
-                <a href="https://www.facebook.com/ServiCell-Belize-100064104937587/" target="_blank">f</a>
+    <footer style="background: #111827; padding: 3rem 1.5rem; color: #94a3b8; border-top: 4px solid var(--primary);">
+        <style>
+            /* Mobile-specific stacking logic */
+            .footer-grid {
+                max-width: 1200px;
+                margin: 0 auto;
+                display: grid;
+                grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+                gap: 2.5rem;
+            }
+
+            @media (max-width: 600px) {
+                .footer-grid {
+                    grid-template-columns: 1fr;
+                    text-align: center;
+                }
+
+                .brand-wrapper,
+                .contact-item {
+                    justify-content: center !important;
+                }
+
+                .social-links {
+                    justify-content: center;
+                }
+            }
+        </style>
+
+        <div class="footer-grid">
+            <div>
+                <div class="brand-wrapper" style="display: flex; align-items: center; gap: 12px; margin-bottom: 1rem;">
+                    <img src="logo.png" alt="ServiCell Logo" style="width: 100px; height: auto;">
+                    <h3 style="color: white; font-size: 1.4rem; font-weight: 800; margin: 0;">ServiCell Belize<span
+                            style="color: var(--primary);">.</span></h3>
+                </div>
+                <p style="line-height: 1.6; font-size: 0.9rem; margin-bottom: 1.5rem;">
+                    Expert mobile repairs and technology solutions in the heart of Belize City. Trusted quality,
+                    professional service.
+                </p>
+
+                <div class="social-container" style="display: flex; flex-direction: column; gap: 10px;">
+                    <span
+                        style="color: white; font-size: 0.8rem; font-weight: 700; text-transform: uppercase; letter-spacing: 1px;">Follow
+                        Us!</span>
+                    <div class="social-links" style="display: flex; gap: 15px;">
+                        <a href="https://www.facebook.com/ServiCell-Belize-100064104937587/" target="_blank"
+                            style="background: #1877f2; color: white; width: 38px; height: 38px; border-radius: 10px; display: flex; align-items: center; justify-content: center; text-decoration: none; font-weight: 900; transition: 0.3s;"
+                            onmouseover="this.style.transform='scale(1.1)'"
+                            onmouseout="this.style.transform='scale(1)'">f</a>
+                    </div>
+                </div>
+            </div>
+
+            <div>
+                <h4
+                    style="color: white; font-weight: 700; margin-bottom: 1.2rem; text-transform: uppercase; font-size: 0.8rem; letter-spacing: 1px;">
+                    Visit Us</h4>
+                <p class="contact-item"
+                    style="margin-bottom: 0.8rem; display: flex; align-items: center; gap: 10px; font-size: 0.9rem;">
+                    <span style="color: var(--primary);">📍</span> #7 Douglas Jones Street, Belize City
+                </p>
+                <p class="contact-item"
+                    style="margin-bottom: 0.8rem; display: flex; align-items: center; gap: 10px; font-size: 0.9rem;">
+                    <span style="color: var(--primary);">📞</span> +501 615-3388
+                </p>
+                <p class="contact-item" style="display: flex; align-items: center; gap: 10px; font-size: 0.9rem;">
+                    <span style="color: var(--primary);">✉️</span> servicellbze@gmail.com
+                </p>
+            </div>
+
+            <div>
+                <h4
+                    style="color: white; font-weight: 700; margin-bottom: 1.2rem; text-transform: uppercase; font-size: 0.8rem; letter-spacing: 1px;">
+                    Business Hours</h4>
+                <div
+                    style="display: flex; justify-content: space-between; margin-bottom: 0.6rem; border-bottom: 1px solid rgba(255,255,255,0.05); padding-bottom: 0.4rem; font-size: 0.9rem;">
+                    <span>Mon – Fri</span>
+                    <span style="color: white;">8:00 AM – 8:00 PM</span>
+                </div>
+                <div
+                    style="display: flex; justify-content: space-between; margin-bottom: 0.6rem; border-bottom: 1px solid rgba(255,255,255,0.05); padding-bottom: 0.4rem; font-size: 0.9rem;">
+                    <span>Saturday</span>
+                    <span style="color: white;">9:00 AM – 7:00 PM</span>
+                </div>
+                <div style="display: flex; justify-content: space-between; font-size: 0.9rem;">
+                    <span>Sunday</span>
+                    <span style="color: #ef4444;">Closed</span>
+                </div>
             </div>
         </div>
-        <p style="margin: 0.5em 0; color: #bbb;">📍 #7 Douglas Jones Street, Belize City</p>
-        <p style="margin: 0.5em 0; color: #bbb;">🕒 Mon–Fri: 8 AM – 8 PM | Sat: 9 AM – 7 PM | Sun: Closed</p>
-        <p style="margin: 0; color: #bbb;">© 2026 ServiCell. All rights reserved.</p>
+
+        <div
+            style="margin-top: 3rem; padding-top: 1.5rem; border-top: 1px solid rgba(255,255,255,0.05); font-size: 0.7rem; text-align: center;">
+            <p>© 2026 ServiCell Belize. All rights reserved.</p>
+        </div>
     </footer>
 
     <script>
+        // Smooth Auto-Scroll Logic
         document.addEventListener('DOMContentLoaded', () => {
             const carousel = document.getElementById('carousel');
             if (!carousel) return;
 
-            const speed = 0.5;
-            let paused = false;
-
+            // 1. Clone the cards for a seamless loop
             const cards = Array.from(carousel.children);
-            const duplicates = 3;
+            cards.forEach(card => {
+                const clone = card.cloneNode(true);
+                carousel.appendChild(clone);
+            });
 
-            for (let i = 0; i < duplicates; i++) {
-                cards.forEach(card => {
-                    const clone = card.cloneNode(true);
-                    clone.setAttribute('aria-hidden', 'true');
-                    carousel.appendChild(clone);
-                });
-            }
+            let isPaused = false;
+            const speed = 0.8; // Adjust for faster/slower scroll
 
-            const cardWidth = cards[0].offsetWidth + parseFloat(getComputedStyle(carousel).gap || 0);
-            const totalOriginalWidth = cardWidth * cards.length;
+            // 2. Interaction Listeners
+            carousel.addEventListener('mouseenter', () => isPaused = true);
+            carousel.addEventListener('mouseleave', () => isPaused = false);
 
-            carousel.addEventListener('mouseenter', () => paused = true);
-            carousel.addEventListener('mouseleave', () => paused = false);
+            // Support for touch devices
+            carousel.addEventListener('touchstart', () => isPaused = true);
+            carousel.addEventListener('touchend', () => isPaused = false);
 
-            function autoScroll() {
-                if (!paused) {
+            function animate() {
+                if (!isPaused) {
                     carousel.scrollLeft += speed;
 
-                    if (carousel.scrollLeft >= totalOriginalWidth) {
+                    // 3. The "Teleport" Logic
+                    // If we've scrolled past the width of the original cards, reset to 0
+                    // We use carousel.scrollWidth / 2 because we doubled the cards
+                    if (carousel.scrollLeft >= carousel.scrollWidth / 2) {
                         carousel.scrollLeft = 0;
                     }
                 }
-                requestAnimationFrame(autoScroll);
+                requestAnimationFrame(animate);
             }
 
-            autoScroll();
+            requestAnimationFrame(animate);
         });
     </script>
-
 </body>
 
 </html>
