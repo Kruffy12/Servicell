@@ -222,9 +222,7 @@
 
         footer p {
             color: #ffffff !important;
-            /* Forces the text to stay white/readable */
             margin-bottom: 0.8rem;
-            /* Overrides the 1rem policy margin */
         }
 
         footer .contact-item {
@@ -332,16 +330,180 @@
 
         .track-btn:disabled {
             background: #cbd5e1;
-            /* Gray color */
             color: #64748b;
             cursor: not-allowed;
             transform: none !important;
-            /* Prevents the hover scale effect */
+        }
+
+        /* Page Entry Animation */
+        .fade-in-entry {
+            opacity: 0;
+            animation: fadeInPage 0.8s ease-out forwards;
+        }
+
+        @keyframes fadeInPage {
+            from {
+                opacity: 0;
+                transform: translateY(15px);
+            }
+
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+        /* ============================================
+           MOBILE FIXES - ADDED BELOW
+           ============================================ */
+
+        /* Tablet and below */
+        @media (max-width: 768px) {
+            nav {
+                padding: 8px 20px;
+                width: 95%;
+                max-width: 600px;
+            }
+
+            nav button {
+                padding: 8px 14px;
+                font-size: 0.85rem;
+            }
+
+            .tracker-card {
+                padding: 2.5rem 2rem;
+                border-radius: 35px;
+            }
+
+            h1 {
+                font-size: 1.5rem;
+            }
+
+            .device-name {
+                font-size: 1.6rem;
+            }
+        }
+
+        /* Mobile phones */
+        @media (max-width: 480px) {
+            nav {
+                padding: 6px 10px;
+                gap: 5px;
+                border-radius: 50px;
+                top: 15px;
+            }
+
+            nav button {
+                padding: 6px 10px;
+                font-size: 0.75rem;
+                letter-spacing: 0;
+            }
+
+            .container {
+                margin-top: 70px;
+                padding: 15px;
+            }
+
+            .tracker-card {
+                padding: 2rem 1.5rem;
+                border-radius: 25px;
+            }
+
+            .logo-small {
+                width: 100px;
+                margin-bottom: 1rem;
+            }
+
+            h1 {
+                font-size: 1.3rem;
+                margin-bottom: 1.5rem;
+            }
+
+            .search-box {
+                flex-direction: column;
+                padding: 6px;
+                gap: 6px;
+            }
+
+            input {
+                padding: 10px 12px;
+                font-size: 1rem;
+                text-align: center;
+            }
+
+            .track-btn {
+                width: 100%;
+                padding: 12px;
+                border-radius: 16px;
+            }
+
+            .device-name {
+                font-size: 1.4rem;
+            }
+
+            .notes-pill {
+                font-size: 0.8rem;
+                padding: 6px 16px;
+            }
+
+            .status-text {
+                font-size: 0.95rem;
+                letter-spacing: 2px;
+            }
+
+            .customer-label {
+                font-size: 0.75rem;
+            }
+
+            #secondaryInfo {
+                font-size: 0.7rem !important;
+            }
+        }
+
+        /* Very small phones */
+        @media (max-width: 360px) {
+            nav button {
+                padding: 5px 8px;
+                font-size: 0.7rem;
+            }
+
+            .tracker-card {
+                padding: 1.5rem 1.2rem;
+            }
+
+            h1 {
+                font-size: 1.2rem;
+            }
+
+            .device-name {
+                font-size: 1.2rem;
+            }
+        }
+
+        /* Landscape mode on mobile */
+        @media (max-height: 500px) and (orientation: landscape) {
+            .container {
+                margin-top: 60px;
+            }
+
+            .tracker-card {
+                padding: 1.5rem;
+            }
+
+            .logo-small {
+                width: 80px;
+                margin-bottom: 0.5rem;
+            }
+
+            h1 {
+                font-size: 1.2rem;
+                margin-bottom: 1rem;
+            }
         }
     </style>
 </head>
 
-<body>
+<body class="fade-in-entry">
     <div class="bg-blobs">
         <div class="blob" style="width: 500px; height: 500px; top: -100px; left: -100px;"></div>
         <div class="blob" style="width: 400px; height: 400px; bottom: -50px; right: -50px; background: #60a5fa;"></div>
@@ -411,7 +573,6 @@
             const idInput = document.getElementById('repairID').value.trim();
             if (!idInput) return;
 
-            // Button Logic
             const trackBtn = document.querySelector('.track-btn');
             trackBtn.disabled = true;
             trackBtn.innerText = "...";
@@ -445,12 +606,10 @@
                     clearInterval(timer);
                     data = await fetchTask;
                     displayResults(data);
-
-                    // Restore Button
                     trackBtn.disabled = false;
                     trackBtn.innerText = "Track";
                 }
-            }, 50); // Sped up the interval slightly for a snappier feel
+            }, 50);
         }
 
         function displayResults(data) {
@@ -496,7 +655,6 @@
                     secondary.innerHTML = `Unit considered abandoned as of <strong>${abandonDateString}</strong>.<br>Please refer to our <a href="policy.html" style="color: #dc2626; text-decoration: underline;">Storage Policy</a>.`;
                     secondary.style.display = "block";
                 } else {
-                    // 1. Determine the status and bar width
                     if (["received", "diagnosing", "log"].some(w => rawStatus.includes(w))) {
                         displayStatus = "RECEIVED / DIAGNOSING"; width = "30%";
                     } else if (["fixing", "repairing", "soldering", "work"].some(w => rawStatus.includes(w))) {
@@ -515,7 +673,6 @@
                         secondary.style.color = "#475569";
                     }
 
-                    // 2. NEW LOGIC: Handle the Notes Label (Storage vs Tracking)
                     notesLabel.style.display = "inline-block";
                     const isDone = ["completed", "ready", "done", "pickup", "unsuccessful", "unfixable", "no fix"].some(w => rawStatus.includes(w));
 
@@ -527,7 +684,7 @@
                         }
                     } else {
                         notesLabel.innerText = "Tracking Active";
-                        notesLabel.style.background = ""; // Reset to default blue
+                        notesLabel.style.background = "";
                         notesLabel.style.color = "";
                     }
                 }
@@ -550,7 +707,6 @@
 
     <footer style="background: #111827; padding: 3rem 1.5rem; color: #94a3b8; border-top: 4px solid var(--primary);">
         <style>
-            /* Mobile-specific stacking logic */
             .footer-grid {
                 max-width: 1200px;
                 margin: 0 auto;
