@@ -254,6 +254,37 @@
                 justify-content: center;
             }
         }
+
+        @media (max-width: 480px) {
+            .search-box {
+                flex-direction: column;
+                background: transparent;
+                /* Remove gray bg from container */
+                border: none;
+                padding: 0;
+                gap: 12px;
+            }
+
+            input {
+                background: #f1f5f9;
+                /* Move gray bg to input specifically */
+                border-radius: 18px;
+                width: 100%;
+                border: 1px solid var(--glass-border);
+            }
+
+            .track-btn {
+                width: 100%;
+                padding: 16px;
+                /* Make it taller/chunkier for thumbs */
+                border-radius: 18px;
+            }
+
+            /* Make the card padding a bit tighter for small screens */
+            .tracker-card {
+                padding: 2.5rem 1.5rem;
+            }
+        }
     </style>
 </head>
 
@@ -335,9 +366,9 @@
 
         <div class="form-card">
             <form id="my-form" action="https://formspree.io/f/xykbnlpa" method="POST">
-                <h3 style="margin-bottom: 0.5rem; font-size: 1.5rem;">New Repair Request</h3>
+                <h3 style="margin-bottom: 0.5rem; font-size: 1.5rem;">Have an Inquiry?</h3>
                 <p style="font-size: 0.85rem; color: var(--text-dim); margin-bottom: 1.5rem;">
-                    Fill this out and we'll get back to you with a quote.
+                    Fill this out and we'll get back to you as soon as we can.
                 </p>
 
                 <div class="input-group">
